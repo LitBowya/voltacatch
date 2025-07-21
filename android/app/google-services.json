@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "828918326978",
+    "project_id": "aqua-commerce-f454b",
+    "storage_bucket": "aqua-commerce-f454b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828918326978:android:24dd06044383f53b373d5b",
+        "android_client_info": {
+          "package_name": "com.example.voltacatch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACI83v2zYSekLtJVPxs4hu5siJAqDBrbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
