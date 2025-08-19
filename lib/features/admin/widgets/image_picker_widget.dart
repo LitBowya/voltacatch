@@ -46,7 +46,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
           imageQuality: 85,
         );
       } catch (e) {
-        print('Multi-image picker failed: $e');
+        Get.snackbar('Error', 'Multi-image picker failed: $e');
         // Fallback to single image picker
         await _pickSingleImageFallback();
         return;
@@ -74,10 +74,9 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
         );
       }
     } on PlatformException catch (e) {
-      print('Platform exception: ${e.message}');
+      Get.snackbar('Error', 'Platform exception: ${e.message}');
       await _handlePlatformException(e);
     } catch (e) {
-      print('General exception: $e');
       Get.snackbar(
         'Error',
         'Failed to pick images. Please try again.',
@@ -114,7 +113,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
         );
       }
     } catch (e) {
-      print('Single image picker also failed: $e');
+      Get.snackbar('Error', 'Single image picker also failed: $e');
       _showImagePickerOptions();
     }
   }

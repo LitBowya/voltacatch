@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../features/admin/products/models/product_model.dart';
 import '../constants/colors.dart';
 import '../../features/products/views/product_details_screen.dart';
+import '../../features/reviews/widgets/rating_display.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;
@@ -117,6 +118,18 @@ class ProductCard extends StatelessWidget {
                                 _buildInStockBadge(),
                             ],
                           ),
+
+                          // Rating Display
+                          if (product.totalReviews > 0)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 4),
+                              child: RatingDisplay(
+                                rating: product.averageRating,
+                                totalReviews: product.totalReviews,
+                                size: 12,
+                                showText: false,
+                              ),
+                            ),
                         ],
                       ),
                     ),

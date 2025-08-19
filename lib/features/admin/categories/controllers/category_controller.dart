@@ -72,7 +72,6 @@ class CategoryController extends GetxController {
     } catch (e) {
       _isLoading.value = false;
       Get.snackbar('Error', 'Failed to load categories: $e');
-      print('Failed to load categories: $e');
     }
   }
 
@@ -105,7 +104,6 @@ class CategoryController extends GetxController {
     } catch (e) {
       _isLoading.value = false;
       Get.snackbar('Error', 'Failed to update category: $e');
-      print('Failed to update category: $e');
     }
   }
 
@@ -121,7 +119,6 @@ class CategoryController extends GetxController {
       Get.snackbar('Success', 'Category deleted successfully');
     } catch (e) {
       Get.snackbar('Error', 'Failed to delete category: $e');
-      print('Failed to delete category: $e');
     }
   }
 

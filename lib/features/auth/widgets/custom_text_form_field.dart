@@ -62,13 +62,13 @@ class CustomTextFormField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: app_colors.TColors.lightGrey.withOpacity(0.3),
+            color: app_colors.TColors.lightGrey.withAlpha((0.3 * 255).toInt()),
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: app_colors.TColors.lightGrey.withOpacity(0.3),
+            color: app_colors.TColors.lightGrey.withAlpha((0.3 * 255).toInt()),
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -89,7 +89,7 @@ class CustomTextFormField extends StatelessWidget {
           horizontal: 16,
           vertical: 16,
         ),
-        labelStyle: TextStyle(color: app_colors.TColors.dark.withOpacity(0.7)),
+        labelStyle: TextStyle(color: app_colors.TColors.dark.withAlpha((0.7 * 255).toInt())),
         hintStyle: TextStyle(color: app_colors.TColors.lightGrey),
       ),
     );

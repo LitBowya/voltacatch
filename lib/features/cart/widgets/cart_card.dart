@@ -24,7 +24,7 @@ class CartCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withAlpha((0.05 * 255).toInt()),
             blurRadius: 12,
             spreadRadius: 1,
             offset: const Offset(0, 4),
@@ -246,7 +246,7 @@ class CartCard extends StatelessWidget {
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withAlpha((0.05 * 255).toInt()),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),

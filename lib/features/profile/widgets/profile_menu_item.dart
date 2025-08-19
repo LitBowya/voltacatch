@@ -27,7 +27,7 @@ class ProfileMenuItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withAlpha((0.05 * 255).toInt()),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -45,7 +45,7 @@ class ProfileMenuItem extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: (iconColor ?? TColors.primary).withOpacity(0.1),
+                    color: (iconColor ?? TColors.primary).withAlpha((0.1 * 255).toInt()),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(

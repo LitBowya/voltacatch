@@ -24,7 +24,7 @@ class ProductListItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withAlpha((0.1 * 255).toInt()),
             spreadRadius: 1,
             blurRadius: 4,
             offset: const Offset(0, 2),
@@ -79,7 +79,7 @@ class ProductListItem extends StatelessWidget {
                           vertical: 2,
                         ),
                         decoration: BoxDecoration(
-                          color: TColors.primary.withOpacity(0.1),
+                          color: TColors.primary.withAlpha((0.1 * 255).toInt()),
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
@@ -127,7 +127,7 @@ class ProductListItem extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          color: Colors.blue.withOpacity(0.1),
+                          color: Colors.blue.withAlpha((0.1 * 255).toInt()),
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: const Icon(
@@ -143,7 +143,7 @@ class ProductListItem extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          color: Colors.red.withOpacity(0.1),
+                          color: Colors.red.withAlpha((0.1 * 255).toInt()),
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: const Icon(

@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../cart/models/cart_model.dart';
 import '../../orders/models/order_model.dart';
 import '../models/shipping_model.dart';
+import '../../profile/controllers/profile_controller.dart';
 
 class CheckoutController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -64,6 +65,7 @@ class CheckoutController extends GetxController {
     }
   }
 
+
   Future<String?> saveShippingAddress({
     required String name,
     required String region,
@@ -115,7 +117,6 @@ class CheckoutController extends GetxController {
       return docRef.id;
     } catch (e) {
       Get.snackbar('Error', 'Failed to save shipping address: $e');
-      print('Error saving shipping address: $e');
       return null;
     }
   }
@@ -185,14 +186,33 @@ class CheckoutController extends GetxController {
       // Update product stock
       await _updateProductStock();
 
+      // Fetch orders after successful creation
+      await fetchOrders();
+
       Get.snackbar('Success', 'Order placed successfully!');
       return docRef.id;
     } catch (e) {
       Get.snackbar('Error', 'Failed to create order: $e');
-      print('Error creating order: $e');
       return null;
     } finally {
       isCreatingOrder.value = false;
+    }
+  }
+
+  /// Fetch user orders and update ProfileController if available
+  Future<void> fetchOrders() async {
+    try {
+      final user = _auth.currentUser;
+      if (user == null) return;
+
+      // Try to get ProfileController if it exists
+      final profileController = Get.find<ProfileController>();
+      if (profileController != null) {
+        await profileController.loadOrderHistory();
+      }
+    } catch (e) {
+      // ProfileController might not be initialized, that's okay
+      print('Note: ProfileController not found, orders will be refreshed when profile is accessed');
     }
   }
 

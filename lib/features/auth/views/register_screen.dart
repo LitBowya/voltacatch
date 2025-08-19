@@ -44,7 +44,7 @@ class RegisterScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: app_colors.TColors.primary.withOpacity(0.2),
+                            color: app_colors.TColors.primary.withAlpha((0.2 * 255).toInt()),
                             blurRadius: 20,
                             offset: const Offset(0, 10),
                           ),
@@ -210,7 +210,7 @@ class RegisterScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Divider(
-                            color: app_colors.TColors.lightGrey.withOpacity(0.5),
+                            color: app_colors.TColors.lightGrey.withAlpha((0.5 * 255).toInt()),
                           ),
                         ),
                         Padding(
@@ -225,7 +225,7 @@ class RegisterScreen extends StatelessWidget {
                         ),
                         Expanded(
                           child: Divider(
-                            color: app_colors.TColors.lightGrey.withOpacity(0.5),
+                            color: app_colors.TColors.lightGrey.withAlpha((0.5 * 255).toInt()),
                           ),
                         ),
                       ],

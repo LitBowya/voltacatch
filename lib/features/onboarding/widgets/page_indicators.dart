@@ -24,7 +24,7 @@ class PageIndicators extends StatelessWidget {
             decoration: BoxDecoration(
               color: controller.currentPage.value == index
                   ? TColors.primary
-                  : TColors.primary.withOpacity(0.4),
+                  : TColors.primary.withAlpha((0.4 * 255).toInt()),
               borderRadius: BorderRadius.circular(4.0),
             ),
           ),

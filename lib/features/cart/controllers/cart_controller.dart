@@ -15,6 +15,9 @@ class CartController extends GetxController {
   // ✅ Public getter to check authentication state
   bool get isUserAuthenticated => _auth.currentUser != null;
 
+  // ✅ Public getter to get current user ID
+  String? get currentUserId => _auth.currentUser?.uid;
+
   final RxList<CartModel> cartItems = <CartModel>[].obs;
   final RxBool isLoading = false.obs;
   final RxDouble totalPrice = 0.0.obs;

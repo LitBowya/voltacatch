@@ -28,7 +28,6 @@ class HomeController extends GetxController {
           .toList();
     } catch (e) {
       Get.snackbar('Error', 'Failed to fetch products: $e');
-      print('Error fetching products: $e');
     } finally {
       isLoading.value = false;
     }

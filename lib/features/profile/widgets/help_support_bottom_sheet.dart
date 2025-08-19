@@ -154,7 +154,7 @@ class HelpSupportBottomSheet extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: TColors.primary.withOpacity(0.1),
+                    color: TColors.primary.withAlpha((0.1 * 255).toInt()),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(

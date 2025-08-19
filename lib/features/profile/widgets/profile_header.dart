@@ -22,15 +22,15 @@ class ProfileHeader extends StatelessWidget {
               height: 100,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withAlpha((0.2 * 255).toInt()),
                 border: Border.all(
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withAlpha((0.3 * 255).toInt()),
                   width: 3,
                 ),
               ),
               child: CircleAvatar(
                 radius: 48,
-                backgroundColor: Colors.white.withOpacity(0.1),
+                backgroundColor: Colors.white.withAlpha((0.1 * 255).toInt()),
                 // If profileImageUrl is not part of your model, handle gracefully
                 child: _buildDefaultAvatar(user?.fullName ?? 'User'),
               ),
@@ -55,7 +55,7 @@ class ProfileHeader extends StatelessWidget {
               user?.email ?? '',
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.white.withOpacity(0.8),
+                color: Colors.white.withAlpha((0.8 * 255).toInt()),
               ),
             ),
 
@@ -88,8 +88,8 @@ class ProfileHeader extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Colors.white.withOpacity(0.3),
-            Colors.white.withOpacity(0.1),
+            Colors.white.withAlpha((0.3 * 255).toInt()),
+            Colors.white.withAlpha((0.1 * 255).toInt()),
           ],
         ),
       ),
@@ -112,7 +112,7 @@ class ProfileHeader extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withAlpha((0.2 * 255).toInt()),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(
@@ -134,7 +134,7 @@ class ProfileHeader extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 12,
-            color: Colors.white.withOpacity(0.8),
+            color: Colors.white.withAlpha((0.8 * 255).toInt()),
           ),
         ),
       ],

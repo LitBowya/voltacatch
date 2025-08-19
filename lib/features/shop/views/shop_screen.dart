@@ -15,6 +15,7 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ShopController shopController = Get.put(ShopController());
+
     final TextEditingController searchController = TextEditingController();
 
     return Scaffold(
@@ -52,7 +53,7 @@ class ShopScreen extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withAlpha((0.05 * 255).toInt()),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -293,17 +294,45 @@ class ShopScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    ElevatedButton(
-                      onPressed: () => controller.clearAllFilters(),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: TColors.primary,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                    // Action buttons side by side
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Reload Products button
+                        ElevatedButton.icon(
+                          onPressed: () async {
+                            // Reload products from server
+                            await controller.fetchProducts();
+                          },
+                          icon: const Icon(Icons.refresh, size: 18),
+                          label: const Text('Refresh'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey[600],
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            elevation: 2,
+                          ),
                         ),
-                      ),
-                      child: const Text('Clear All Filters'),
+                        const SizedBox(width: 16),
+                        // Clear All Filters button
+                        ElevatedButton.icon(
+                          onPressed: () => controller.clearAllFilters(),
+                          icon: const Icon(Icons.clear_all, size: 18),
+                          label: const Text('Clear Filters'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: TColors.primary,
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            elevation: 2,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

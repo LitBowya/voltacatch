@@ -76,7 +76,7 @@ class CheckoutScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withAlpha((0.08 * 255).toInt()),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -180,7 +180,7 @@ class CheckoutScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withAlpha((0.08 * 255).toInt()),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -284,7 +284,7 @@ class CheckoutScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withAlpha((0.08 * 255).toInt()),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -364,7 +364,7 @@ class CheckoutScreen extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha((0.1 * 255).toInt()),
             blurRadius: 20,
             offset: const Offset(0, -5),
           ),

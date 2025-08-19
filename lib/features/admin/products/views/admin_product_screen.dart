@@ -218,7 +218,7 @@ class _AdminProductsScreenState extends State<AdminProductsScreen>
             }
 
             if (productController.products.isEmpty) {
-              return const Center(child: Text('No products found'));
+              return _buildEmptyState();
             }
 
             return ListView.builder(
@@ -301,6 +301,112 @@ class _AdminProductsScreenState extends State<AdminProductsScreen>
             child: const Text('Delete'),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildEmptyState() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Enhanced icon with gradient background
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Colors.grey[200]!,
+                    Colors.grey[100]!,
+                  ],
+                ),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: const Icon(
+                Icons.inventory_2_outlined,
+                size: 64,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 24),
+
+            // Title
+            Text(
+              'No Products Found',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[800],
+              ),
+            ),
+            const SizedBox(height: 8),
+
+            // Subtitle
+            Text(
+              'Your product inventory is empty.\nAdd some products to get started!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[600],
+                height: 1.5,
+              ),
+            ),
+            const SizedBox(height: 32),
+
+            // Action buttons
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Refresh button
+                ElevatedButton.icon(
+                  onPressed: () async {
+                    // Refresh products list
+                    await productController.loadProducts(refresh: true);
+                  },
+                  icon: const Icon(Icons.refresh),
+                  label: const Text('Refresh'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[600],
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    elevation: 2,
+                  ),
+                ),
+                const SizedBox(width: 16),
+
+                // Add Product button
+                ElevatedButton.icon(
+                  onPressed: () => Get.to(() => const CreateProductScreen()),
+                  icon: const Icon(Icons.add),
+                  label: const Text('Add Product'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: TColors.primary,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    elevation: 3,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

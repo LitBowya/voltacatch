@@ -30,7 +30,7 @@ class AddressSelectionCard extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withAlpha((0.05 * 255).toInt()),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -58,10 +58,10 @@ class AddressSelectionCard extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: TColors.primary.withOpacity(0.1),
+                        color: TColors.primary.withAlpha((0.1 * 255).toInt()),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: TColors.primary.withOpacity(0.3),
+                          color: TColors.primary.withAlpha((0.3 * 255).toInt()),
                           width: 0.5,
                         ),
                       ),

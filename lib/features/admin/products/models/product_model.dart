@@ -18,6 +18,10 @@ class ProductModel {
   final bool isActive;
   final DateTime createdAt;
   final DateTime updatedAt;
+  // New rating fields
+  final double averageRating;
+  final int totalReviews;
+  final Map<int, int> ratingDistribution;
 
   ProductModel({
     required this.id,
@@ -36,9 +40,18 @@ class ProductModel {
     this.isActive = true,
     required this.createdAt,
     required this.updatedAt,
+    this.averageRating = 0.0,
+    this.totalReviews = 0,
+    this.ratingDistribution = const {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
   });
 
   Map<String, dynamic> toJson() {
+    // Convert ratingDistribution Map<int, int> to Map<String, int> for Firestore compatibility
+    Map<String, int> distributionForFirestore = {};
+    ratingDistribution.forEach((key, value) {
+      distributionForFirestore[key.toString()] = value;
+    });
+
     return {
       'name': name,
       'description': description,
@@ -53,8 +66,11 @@ class ProductModel {
       'waterType': waterType,
       'ph': ph,
       'isActive': isActive,
-      'createdAt': createdAt,
-      'updatedAt': updatedAt,
+      'createdAt': Timestamp.fromDate(createdAt),
+      'updatedAt': Timestamp.fromDate(updatedAt),
+      'averageRating': averageRating,
+      'totalReviews': totalReviews,
+      'ratingDistribution': distributionForFirestore,
     };
   }
 
@@ -76,7 +92,30 @@ class ProductModel {
       isActive: json['isActive'] ?? true,
       createdAt: (json['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
       updatedAt: (json['updatedAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      averageRating: (json['averageRating'] ?? 0.0).toDouble(),
+      totalReviews: json['totalReviews'] ?? 0,
+      ratingDistribution: json['ratingDistribution'] != null
+          ? _convertRatingDistribution(json['ratingDistribution'])
+          : {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
     );
+  }
+
+  // Helper method to convert rating distribution from Firestore format
+  static Map<int, int> _convertRatingDistribution(dynamic distributionData) {
+    Map<int, int> result = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
+
+    if (distributionData is Map) {
+      distributionData.forEach((key, value) {
+        // Convert string keys to int keys
+        int intKey = key is String ? int.tryParse(key) ?? 0 : key as int;
+        int intValue = value is int ? value : 0;
+        if (intKey >= 1 && intKey <= 5) {
+          result[intKey] = intValue;
+        }
+      });
+    }
+
+    return result;
   }
 
   ProductModel copyWith({
@@ -101,6 +140,9 @@ class ProductModel {
     bool? isActive,
     DateTime? createdAt,
     DateTime? updatedAt,
+    double? averageRating,
+    int? totalReviews,
+    Map<int, int>? ratingDistribution,
   }) {
     return ProductModel(
       id: id ?? this.id,
@@ -119,6 +161,9 @@ class ProductModel {
       isActive: isActive ?? this.isActive,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      averageRating: averageRating ?? this.averageRating,
+      totalReviews: totalReviews ?? this.totalReviews,
+      ratingDistribution: ratingDistribution ?? this.ratingDistribution,
     );
   }
 }

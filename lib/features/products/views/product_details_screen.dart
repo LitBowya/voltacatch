@@ -8,6 +8,7 @@ import '../../admin/products/models/product_model.dart';
 import '../../cart/controllers/cart_controller.dart';
 import '../../cart/models/cart_model.dart';
 import '../../checkout/views/checkout_screen.dart';
+import '../../reviews/widgets/reviews_section.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final ProductModel product;
@@ -72,10 +73,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         child: Column(
           children: [
             Expanded(
-             child: Padding(padding: EdgeInsets.all(16),
-               child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
                   child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Product Image Carousel
                       _buildImageCarousel(),
@@ -105,12 +107,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         const SizedBox(height: 24),
                       ],
 
+                      // Reviews Section
+                      _buildReviewsSection(),
+
                       // Add some bottom padding
                       const SizedBox(height: 100),
                     ],
                   ),
-                ))
+                ),
               ),
+            ),
 
             // Bottom Action Bar
             if (!isOutOfStock) _buildBottomActionBar(),
@@ -129,83 +135,58 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         borderRadius: BorderRadius.circular(16),
       ),
       child: widget.product.images.isNotEmpty
-          ? Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: PageView.builder(
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentImageIndex = index;
-                });
-              },
-              itemCount: widget.product.images.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Image.network(
-                    widget.product.images[index],
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        color: Colors.grey[200],
-                        child: const Center(
-                          child: Icon(Icons.broken_image, size: 80),
-                        ),
-                      );
-                    },
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Container(
-                        color: Colors.grey[200],
-                        child: const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
-
-          // Image indicators
-          if (widget.product.images.length > 1)
-            Positioned(
-              bottom: 12,
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: widget.product.images.asMap().entries.map((entry) {
-                  return Container(
-                    width: _currentImageIndex == entry.key ? 12 : 8,
-                    height: 8,
-                    margin: const EdgeInsets.symmetric(horizontal: 4),
-                    decoration: BoxDecoration(
-                      color: _currentImageIndex == entry.key
-                          ? TColors.primary
-                          : Colors.white.withAlpha(60),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                  );
-                }).toList(),
+          ? Hero(
+              tag: 'product-details-${widget.product.id}', // Make tag unique for details screen
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: PageView.builder(
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentImageIndex = index;
+                    });
+                  },
+                  itemCount: widget.product.images.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Image.network(
+                        widget.product.images[index],
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[200],
+                            child: const Center(
+                              child: Icon(Icons.broken_image, size: 80),
+                            ),
+                          );
+                        },
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Container(
+                            color: Colors.grey[200],
+                            child: const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ),
+            )
+          : Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: const Center(
+                child: Icon(Icons.image_not_supported, size: 80),
               ),
             ),
-        ],
-      )
-          : Container(
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: const Center(
-          child: Icon(Icons.image_not_supported, size: 80),
-        ),
-      ),
     );
   }
 
@@ -245,9 +226,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
         // Price
         Text(
-          'GHS ${widget.product.price.toStringAsFixed(2)}',
+          'GHS ${widget.product.price.toStringAsFixed(2)} per crate',
           style: const TextStyle(
-            fontSize: 28,
+            fontSize: 24,
             color: TColors.primary,
             fontWeight: FontWeight.bold,
           ),
@@ -605,82 +586,35 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
-  bool _hasAquariumSpecs() {
-    return widget.product.waterType.isNotEmpty ||
-        widget.product.ph.isNotEmpty;
+  Widget _buildReviewsSection() {
+    return ReviewsSection(
+      productId: widget.product.id,
+      productName: widget.product.name,
+    );
   }
 
-  Future<void> _addToCart() async {
-    if (!cartController.isUserAuthenticated) {
-      Get.snackbar(
-        'Authentication Required',
-        'Please login to add items to cart',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withAlpha(80),
-        colorText: Colors.white,
-        icon: const Icon(Icons.warning, color: Colors.white),
-      );
-      return;
-    }
-
-    if (_quantity > widget.product.stock) {
-      Get.snackbar(
-        'Insufficient Stock',
-        'Only ${widget.product.stock} items available',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.orange.withAlpha(80),
-        colorText: Colors.white,
-        icon: const Icon(Icons.warning, color: Colors.white),
-      );
-      return;
-    }
-
-    await cartController.addToCart(widget.product, quantity: _quantity);
+  void _addToCart() {
+    // Add to cart using the controller's method
+    cartController.addToCart(widget.product, quantity: _quantity);
   }
 
   void _buyNow() {
-    if (!cartController.isUserAuthenticated) {
-      Get.snackbar(
-        'Authentication Required',
-        'Please login to buy this product',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withAlpha(80),
-        colorText: Colors.white,
-        icon: const Icon(Icons.warning, color: Colors.white),
-      );
-      return;
-    }
-
-    if (_quantity > widget.product.stock) {
-      Get.snackbar(
-        'Insufficient Stock',
-        'Only ${widget.product.stock} items available',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.orange.withAlpha(80),
-        colorText: Colors.white,
-        icon: const Icon(Icons.warning, color: Colors.white),
-      );
-      return;
-    }
-
-    // Create a temporary cart item for buy now
-    final buyNowItem = CartModel(
-      id: 'temp_${widget.product.id}',
-      userId: cartController.isUserAuthenticated
-          ? cartController.auth.currentUser!.uid
-          : '',
+    // Create temporary cart for buy now
+    final cartItems = [CartModel(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      userId: cartController.currentUserId ?? '',
       productId: widget.product.id,
       product: widget.product,
       quantity: _quantity,
-      totalPrice: (widget.product.price * _quantity).toDouble(),
+      totalPrice: widget.product.price * _quantity,
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
-    );
+    )];
 
+    Get.to(() => CheckoutScreen(cartItems: cartItems, isFromCart: false));
+  }
 
-    Get.to(() => CheckoutScreen(
-      cartItems: [buyNowItem],
-      isFromCart: false,
-    ));
+  bool _hasAquariumSpecs() {
+    return widget.product.waterType.isNotEmpty || widget.product.ph.isNotEmpty;
   }
 }

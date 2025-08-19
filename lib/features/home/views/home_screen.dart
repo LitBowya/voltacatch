@@ -1,12 +1,10 @@
 // lib/features/home/views/home_screen.dart
 import 'package:voltacatch/features/products/widgets/latest_products_widget.dart';
-import 'package:voltacatch/features/products/widgets/cheapest_products_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../core/constants/colors.dart';
-import '../../products/widgets/most_expensive_product_widget.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/carousel_banner.dart';
 
@@ -44,10 +42,6 @@ class HomeScreen extends StatelessWidget {
               const SimpleCarouselBanner(),
               const SizedBox(height: 24),
               LatestProductsWidget(products: controller.products),
-              const SizedBox(height: 24),
-              MostExpensiveProductsWidget(products: controller.products),
-              const SizedBox(height: 24),
-              CheapestProductsWidget(products: controller.products),
             ],
           ),
         );

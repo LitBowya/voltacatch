@@ -5,6 +5,7 @@ import '../../../core/constants/colors.dart';
 import '../../cart/models/cart_model.dart';
 import '../controllers/profile_controller.dart';
 import '../../orders/models/order_model.dart';
+import '../../checkout/controllers/checkout_controller.dart';
 
 class OrderHistoryBottomSheet extends StatelessWidget {
   final ProfileController controller;
@@ -61,7 +62,7 @@ class OrderHistoryBottomSheet extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: TColors.primary.withOpacity(0.1),
+                    color: TColors.primary.withAlpha((0.1 * 255).toInt()),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Text(
@@ -162,6 +163,31 @@ class OrderHistoryBottomSheet extends StatelessWidget {
             ),
             child: const Text('Start Shopping'),
           ),
+          const SizedBox(height: 8),
+          ElevatedButton(
+            onPressed: () async {
+              // Use CheckoutController's fetchOrders function for extra layer of protection
+              try {
+                final checkoutController = Get.find<CheckoutController>();
+                await checkoutController.fetchOrders();
+              } catch (e) {
+                // Fallback to ProfileController if CheckoutController not found
+                await controller.loadOrderHistory();
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: TColors.light,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 32,
+                vertical: 12,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
+            ),
+            child: const Text('Refresh Orders'),
+          ),
         ],
       ),
     );
@@ -176,7 +202,7 @@ class OrderHistoryBottomSheet extends StatelessWidget {
         border: Border.all(color: Colors.grey[200]!),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withAlpha((0.04 * 255).toInt()),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

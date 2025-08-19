@@ -63,7 +63,6 @@ class ProductController extends GetxController {
     } catch (e) {
       _isLoading.value = false;
       Get.snackbar('Error', 'Failed to create product: $e');
-      print('Failed to create product: $e');
       throw Exception('Failed to create product: $e');
     }
   }
@@ -132,7 +131,6 @@ class ProductController extends GetxController {
     } catch (e) {
       _isLoading.value = false;
       Get.snackbar('Error', 'Failed to load products: $e');
-      print('Failed to load products: $e');
     }
   }
 
@@ -198,7 +196,6 @@ class ProductController extends GetxController {
     } catch (e) {
       _isLoading.value = false;
       Get.snackbar('Error', 'Failed to update product: $e');
-      print('Failed to update product: $e');
     }
   }
 
@@ -214,7 +211,6 @@ class ProductController extends GetxController {
       Get.snackbar('Success', 'Product deleted successfully');
     } catch (e) {
       Get.snackbar('Error', 'Failed to delete product: $e');
-      print('Failed to delete product: $e');
     }
   }
 

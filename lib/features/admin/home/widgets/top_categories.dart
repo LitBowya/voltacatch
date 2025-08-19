@@ -65,7 +65,7 @@ class TopCategories extends StatelessWidget {
               return Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: category['color'].withOpacity(0.1),
+                  color: category['color'].withAlpha((0.1 * 255).toInt()),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(

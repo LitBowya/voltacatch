@@ -102,7 +102,7 @@ class _SimpleCarouselBannerState extends State<SimpleCarouselBanner> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha((0.1 * 255).toInt()),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -118,7 +118,7 @@ class _SimpleCarouselBannerState extends State<SimpleCarouselBanner> {
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
                 return Container(
-                  color: TColors.primary.withOpacity(0.1),
+                  color: TColors.primary.withAlpha((0.1 * 255).toInt()),
                   child: const Center(
                     child: Icon(
                       Icons.image_not_supported,
@@ -136,7 +136,7 @@ class _SimpleCarouselBannerState extends State<SimpleCarouselBanner> {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Colors.black.withOpacity(0.7),
+                    Colors.black.withAlpha((0.7 * 255).toInt()),
                   ],
                 ),
               ),
@@ -187,7 +187,7 @@ class _SimpleCarouselBannerState extends State<SimpleCarouselBanner> {
             borderRadius: BorderRadius.circular(4),
             color: _currentIndex == index
                 ? TColors.primary
-                : TColors.primary.withOpacity(0.3),
+                : TColors.primary.withAlpha((0.3 * 255).toInt()),
           ),
         );
       }).toList(),

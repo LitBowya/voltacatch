@@ -216,7 +216,7 @@ class _EditProfileBottomSheetState extends State<EditProfileBottomSheet> {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withAlpha((0.05 * 255).toInt()),
                   blurRadius: 10,
                   offset: const Offset(0, -2),
                 ),
@@ -339,7 +339,7 @@ class _EditProfileBottomSheetState extends State<EditProfileBottomSheet> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            TColors.primary.withOpacity(0.8),
+            TColors.primary.withAlpha((0.8 * 255).toInt()),
             TColors.primary,
           ],
         ),

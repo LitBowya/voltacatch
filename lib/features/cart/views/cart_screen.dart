@@ -1,6 +1,7 @@
 // lib/features/cart/views/cart_screen.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:voltacatch/features/shop/views/shop_screen.dart';
 import '../../../core/constants/colors.dart';
 import '../../checkout/views/checkout_screen.dart';
 import '../controllers/cart_controller.dart';
@@ -91,7 +92,7 @@ class CartScreen extends StatelessWidget {
           ),
           const SizedBox(height: 32),
           ElevatedButton(
-            onPressed: () => Get.back(),
+            onPressed: () => Get.to(()=>ShopScreen()),
             style: ElevatedButton.styleFrom(
               backgroundColor: TColors.primary,
               foregroundColor: Colors.white,
@@ -114,7 +115,7 @@ class CartScreen extends StatelessWidget {
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha((0.1 * 255).toInt()),
             blurRadius: 20,
             offset: const Offset(0, -5),
           ),

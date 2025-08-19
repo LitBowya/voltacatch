@@ -552,24 +552,6 @@ class OrderDetailsBottomSheet extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 8),
-        SizedBox(
-          width: double.infinity,
-          child: OutlinedButton.icon(
-            onPressed: () {
-              // Add print/export functionality here
-              Get.snackbar('Info', 'Print/Export functionality coming soon');
-            },
-            icon: const Icon(Icons.print),
-            label: const Text('Print Order'),
-            style: OutlinedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-          ),
-        ),
       ],
     );
   }

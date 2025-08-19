@@ -40,7 +40,7 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius),
           ),
           elevation: 2,
-          shadowColor: app_colors.TColors.primary.withOpacity(0.3),
+          shadowColor: app_colors.TColors.primary.withAlpha((0.3 * 255).toInt()),
         ),
         child: isLoading
             ? const SizedBox(

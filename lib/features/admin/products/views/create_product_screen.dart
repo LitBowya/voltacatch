@@ -2,7 +2,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/constants/colors.dart';
 import '../../../navigation/controllers/admin_navigation_controller.dart';
 import '../../../navigation/widgets/admin_screen_wrapper.dart';
 import '../../widgets/image_picker_widget.dart';
@@ -111,7 +110,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             child: Text(
               isEditing ? 'Update' : 'Create',
               style: TextStyle(
-                color: TColors.primary,
+                color: Colors.white,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -277,6 +276,10 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
           ph: _phController.text.trim(),
           createdAt: isEditing ? widget.product!.createdAt : DateTime.now(),
           updatedAt: DateTime.now(),
+          // Add default rating values for new products
+          averageRating: isEditing ? widget.product!.averageRating : 0.0,
+          totalReviews: isEditing ? widget.product!.totalReviews : 0,
+          ratingDistribution: isEditing ? widget.product!.ratingDistribution : const {1: 0, 2: 0, 3: 0, 4: 0, 5: 0},
         );
 
         if (isEditing) {

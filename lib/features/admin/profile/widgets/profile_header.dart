@@ -22,7 +22,7 @@ class ProfileHeader extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withAlpha((0.1 * 255).toInt()),
             spreadRadius: 1,
             blurRadius: 10,
             offset: const Offset(0, 2),
@@ -37,7 +37,7 @@ class ProfileHeader extends StatelessWidget {
               Obx(() {
                 return CircleAvatar(
                   radius: 50,
-                  backgroundColor: TColors.primary.withOpacity(0.1),
+                  backgroundColor: TColors.primary.withAlpha((0.1 * 255).toInt()),
                   backgroundImage: controller.profileImageUrl.isNotEmpty
                       ? NetworkImage(controller.profileImageUrl)
                       : null,
@@ -82,7 +82,7 @@ class ProfileHeader extends StatelessWidget {
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: TColors.primary.withOpacity(0.1),
+                    color: TColors.primary.withAlpha((0.1 * 255).toInt()),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(

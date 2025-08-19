@@ -26,7 +26,7 @@ class OnboardingNavigationButtons extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(12.0),
                 decoration: BoxDecoration(
-                  color: app_colors.TColors.primary.withOpacity(0.8),
+                  color: app_colors.TColors.primary.withAlpha((0.8 * 255).toInt()),
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 child: const Icon(
@@ -51,7 +51,7 @@ class OnboardingNavigationButtons extends StatelessWidget {
                 borderRadius: BorderRadius.circular(25.0),
                 boxShadow: [
                   BoxShadow(
-                    color: app_colors.TColors.primary.withOpacity(0.3),
+                    color: app_colors.TColors.primary.withAlpha((0.3 * 255).toInt()),
                     blurRadius: 8.0,
                     offset: const Offset(0, 4),
                   ),
