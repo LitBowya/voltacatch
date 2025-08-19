@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     _initializeControllers();
 
     return GetMaterialApp(
-      title: 'Farm Commerce',
+      title: 'Volta Catch',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.green,

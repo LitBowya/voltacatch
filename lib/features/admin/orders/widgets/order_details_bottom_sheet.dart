@@ -207,7 +207,7 @@ class OrderDetailsBottomSheet extends StatelessWidget {
                   Row(
                     children: [
                       CircleAvatar(
-                        backgroundColor: TColors.primary.withOpacity(0.1),
+                        backgroundColor: TColors.primary.withAlpha((255 * 0.1).toInt()),
                         child: Icon(
                           Icons.person,
                           color: TColors.primary,

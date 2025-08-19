@@ -20,7 +20,7 @@ class OrdersChart extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withAlpha((255 * 0.1).toInt()),
             spreadRadius: 1,
             blurRadius: 4,
             offset: const Offset(0, 2),
@@ -167,7 +167,7 @@ class OrdersChart extends StatelessWidget {
                       ),
                       belowBarData: BarAreaData(
                         show: true,
-                        color: TColors.primary.withOpacity(0.1),
+                        color: TColors.primary.withAlpha((255 * 0.1).toInt()),
                       ),
                     ),
                   ],
@@ -189,7 +189,7 @@ class OrdersChart extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: TColors.primary.withOpacity(0.1),
+                    color: TColors.primary.withAlpha((255 * 0.1).toInt()),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(

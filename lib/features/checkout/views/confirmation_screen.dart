@@ -1,4 +1,4 @@
-// lib/features/checkout/views/confirmation_screen.dart
+
 import 'package:voltacatch/features/navigation/views/main_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +6,6 @@ import '../../../core/constants/colors.dart';
 import '../controllers/checkout_controller.dart';
 import '../../cart/models/cart_model.dart';
 import '../../cart/controllers/cart_controller.dart';
-import '../../home/views/home_screen.dart';
 import '../models/shipping_model.dart';
 
 class ConfirmationScreen extends StatelessWidget {
@@ -75,7 +74,7 @@ class ConfirmationScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withAlpha((255 * 0.1).toInt()),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -187,7 +186,7 @@ class ConfirmationScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withAlpha((255 * 0.1).toInt()),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -272,7 +271,7 @@ class ConfirmationScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withAlpha((255 * 0.1).toInt()),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -359,7 +358,7 @@ class ConfirmationScreen extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withAlpha((255 * 0.1).toInt()),
             blurRadius: 20,
             offset: const Offset(0, -5),
           ),
@@ -373,10 +372,10 @@ class ConfirmationScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: TColors.primary.withOpacity(0.1),
+                color: TColors.primary.withAlpha((255 * 0.1).toInt()),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: TColors.primary.withOpacity(0.2),
+                  color: TColors.primary.withAlpha((255 * 0.2).toInt()),
                 ),
               ),
               child: Row(

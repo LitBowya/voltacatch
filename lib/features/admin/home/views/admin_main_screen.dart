@@ -1,12 +1,10 @@
-// lib/features/admin/home/views/admin_main_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/constants/colors.dart';
 import '../controllers/admin_dashboard_controller.dart';
-import '../widgets/latest_products.dart';
 import '../widgets/stat_card.dart';
 import '../widgets/orders_chart.dart';
-import '../widgets/top_categories.dart';
 
 class AdminMainScreen extends StatelessWidget {
   const AdminMainScreen({super.key});

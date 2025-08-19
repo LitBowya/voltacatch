@@ -1,8 +1,7 @@
-// lib/features/admin/categories/views/create_category_screen.dart
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/constants/colors.dart';
 import '../../../navigation/controllers/admin_navigation_controller.dart';
 import '../../../navigation/widgets/admin_screen_wrapper.dart';
 import '../../widgets/image_picker_widget.dart';

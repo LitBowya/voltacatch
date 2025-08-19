@@ -1,6 +1,5 @@
-// lib/features/admin/profile/widgets/profile_stats.dart
+
 import 'package:flutter/material.dart';
-import '../../../../core/constants/colors.dart';
 import '../controllers/admin_profile_controller.dart';
 
 class ProfileStats extends StatelessWidget {
@@ -20,7 +19,7 @@ class ProfileStats extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withAlpha((255 * 0.1).toInt()),
             spreadRadius: 1,
             blurRadius: 10,
             offset: const Offset(0, 2),
@@ -88,7 +87,7 @@ class ProfileStats extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
+            color: color.withAlpha((255 * 0.1).toInt()),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(

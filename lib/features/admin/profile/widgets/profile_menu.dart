@@ -1,10 +1,9 @@
-// lib/features/admin/profile/widgets/profile_menu.dart
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/constants/colors.dart';
 import '../controllers/admin_profile_controller.dart';
 import 'change_password_bottom_sheet.dart';
-import 'admin_settings_bottom_sheet.dart';
 
 class ProfileMenu extends StatelessWidget {
   final AdminProfileController controller;
@@ -22,7 +21,7 @@ class ProfileMenu extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withAlpha((255 * 0.1).toInt()),
             spreadRadius: 1,
             blurRadius: 10,
             offset: const Offset(0, 2),
@@ -79,8 +78,8 @@ class ProfileMenu extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: isDestructive
-              ? Colors.red.withOpacity(0.1)
-              : TColors.primary.withOpacity(0.1),
+              ? Colors.red.withAlpha((255 * 0.1).toInt())
+              : TColors.primary.withAlpha((255 * 0.1).toInt()),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(

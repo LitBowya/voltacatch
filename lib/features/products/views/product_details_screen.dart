@@ -665,11 +665,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
     // Create a temporary cart item for buy now
     final buyNowItem = CartModel(
-      id: 'temp_${widget.product.id ?? 'unknown'}',
+      id: 'temp_${widget.product.id}',
       userId: cartController.isUserAuthenticated
           ? cartController.auth.currentUser!.uid
           : '',
-      productId: widget.product.id ?? '',
+      productId: widget.product.id,
       product: widget.product,
       quantity: _quantity,
       totalPrice: (widget.product.price * _quantity).toDouble(),

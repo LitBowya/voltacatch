@@ -13,9 +13,8 @@ class LatestProductsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final latestProducts = products
-        .where((product) => product.createdAt != null)
         .toList()
-      ..sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
+      ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
     final displayProducts = latestProducts.take(6).toList();
 

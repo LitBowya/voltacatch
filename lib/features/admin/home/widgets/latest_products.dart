@@ -48,7 +48,7 @@ class LatestProducts extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withAlpha((255 * 0.1).toInt()),
             spreadRadius: 1,
             blurRadius: 4,
             offset: const Offset(0, 2),
@@ -77,7 +77,7 @@ class LatestProducts extends StatelessWidget {
               return ListTile(
                 contentPadding: EdgeInsets.zero,
                 leading: CircleAvatar(
-                  backgroundColor: TColors.primary.withOpacity(0.1),
+                  backgroundColor: TColors.primary.withAlpha((255 * 0.1).toInt()),
                   child: Icon(
                     Icons.shopping_bag_outlined,
                     color: TColors.primary,

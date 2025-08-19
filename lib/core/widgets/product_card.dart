@@ -31,14 +31,14 @@ class ProductCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.06),
+              color: Colors.black.withAlpha((255 * 0.06).toInt()),
               blurRadius: 16,
               offset: const Offset(0, 4),
               spreadRadius: 0,
             ),
           ],
           border: Border.all(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withAlpha((255 * 0.1).toInt()),
             width: 1,
           ),
         ),
@@ -179,7 +179,7 @@ class ProductCard extends StatelessWidget {
                   end: Alignment.centerRight,
                   colors: [
                     Colors.transparent,
-                    Colors.black.withOpacity(0.03),
+                    Colors.black.withAlpha((255 * 0.3).toInt()),
                   ],
                 ),
               ),
@@ -213,10 +213,10 @@ class ProductCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: TColors.primary.withOpacity(0.08),
+        color: TColors.primary.withAlpha((255 * 0.1).toInt()),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: TColors.primary.withOpacity(0.15),
+          color: TColors.primary.withAlpha((255 * 0.1).toInt()),
           width: 0.5,
         ),
       ),
@@ -244,7 +244,7 @@ class ProductCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: Colors.orange.withOpacity(0.3),
+          color: Colors.orange.withAlpha((255 * 0.3).toInt()),
           width: 0.5,
         ),
       ),
@@ -282,7 +282,7 @@ class ProductCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: Colors.green.withOpacity(0.3),
+          color: Colors.green.withAlpha((255 * 0.3).toInt()),
           width: 0.5,
         ),
       ),
@@ -311,18 +311,18 @@ class ProductCard extends StatelessWidget {
   Widget _buildOutOfStockOverlay() {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.7),
+        color: Colors.black.withAlpha((255 * 0.7).toInt()),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Center(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.95),
+            color: Colors.white.withAlpha((255 * 0.95).toInt()),
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: Colors.black.withAlpha((255 * 0.1).toInt()),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),

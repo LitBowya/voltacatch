@@ -89,8 +89,8 @@ class _AboutBottomSheetState extends State<AboutBottomSheet> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          TColors.primary.withOpacity(0.1),
-                          TColors.primary.withOpacity(0.05),
+                          TColors.primary.withAlpha((255 * 0.1).toInt()),
+                          TColors.primary.withAlpha((255 * 0.1).toInt()),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(20),
@@ -311,7 +311,7 @@ class _AboutBottomSheetState extends State<AboutBottomSheet> {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: TColors.primary.withOpacity(0.1),
+              color: TColors.primary.withAlpha((255 * 0.1).toInt()),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(
@@ -443,43 +443,6 @@ class _AboutBottomSheetState extends State<AboutBottomSheet> {
     );
   }
 
-  Widget _buildLegalItem(String title, VoidCallback onTap) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey[50],
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(8),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 14,
-                  color: Colors.grey[400],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   Future<void> _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
@@ -511,28 +474,6 @@ class _AboutBottomSheetState extends State<AboutBottomSheet> {
     }
   }
 
-  void _showTermsOfService() {
-    Get.snackbar(
-      'Terms of Service',
-      'Terms of Service will be displayed here',
-      snackPosition: SnackPosition.BOTTOM,
-    );
-  }
 
-  void _showPrivacyPolicy() {
-    Get.snackbar(
-      'Privacy Policy',
-      'Privacy Policy will be displayed here',
-      snackPosition: SnackPosition.BOTTOM,
-    );
-  }
 
-  void _showLicenses() {
-    showLicensePage(
-      context: context,
-      applicationName: 'Farm Commerce',
-      applicationVersion: appVersion,
-      applicationLegalese: '© 2024 Farm Commerce. All rights reserved.',
-    );
-  }
 }

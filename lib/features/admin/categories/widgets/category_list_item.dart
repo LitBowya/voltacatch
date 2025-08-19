@@ -1,4 +1,4 @@
-// lib/features/admin/products/widgets/category_list_item.dart
+
 import 'package:flutter/material.dart';
 import '../models/category_model.dart';
 
@@ -23,7 +23,7 @@ class CategoryListItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withAlpha((255 * 0.1).toInt()),
             spreadRadius: 1,
             blurRadius: 4,
             offset: const Offset(0, 2),
@@ -102,7 +102,7 @@ class CategoryListItem extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Colors.blue.withOpacity(0.1),
+                          color: Colors.blue.withAlpha((255 * 0.1).toInt()),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: const Icon(
@@ -118,7 +118,7 @@ class CategoryListItem extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Colors.red.withOpacity(0.1),
+                          color: Colors.red.withAlpha((255 * 0.1).toInt()),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: const Icon(

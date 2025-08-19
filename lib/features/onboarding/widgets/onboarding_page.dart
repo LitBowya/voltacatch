@@ -11,7 +11,6 @@ class OnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Get screen dimensions for responsive layout
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold( // Using Scaffold for overall page structure and background color
       backgroundColor: Colors.white, // Set the background color for the entire page
